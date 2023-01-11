@@ -8,6 +8,9 @@ function PageGuide() {
         <li className="o-guide__item">
           <Link to="Css2dLabel">月亮绕着地球转(Css2dLabel)</Link>
         </li>
+        <li className="o-guide__item">
+          <Link to="Css3dMolecules">分子旋转(Css3dMolecules)</Link>
+        </li>
       </ul>
     </div>
   );
