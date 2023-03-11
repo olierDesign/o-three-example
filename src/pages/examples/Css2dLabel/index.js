@@ -218,3 +218,10 @@ const Css2dLabel = (props) => {
 }
 
 export default Css2dLabel;
+
+/**
+ * 月球环绕example 小结：
+ * 1、camera.layers: 控制 mesh 显隐（可做显隐动画）
+ * 2、CSS2DObject: 传入 dom，可将带样式的元素添加到画布中
+ * 3、CSS2DRenderer: 用于专门渲染 CSS2DObject
+ */
