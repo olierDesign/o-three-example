@@ -270,6 +270,7 @@ const Css3dMolecules = () => {
         // 从“元素名称”颜色球对象中，获取“当前元素”的 dataUrl
         const colorSprite = colorSpriteMap[element];
 
+        /* ---------- 原子颜色球 ---------- */
         // 创建 img Dom 元素
         const atom = document.createElement('img');
         // 把 dataUrl 赋值给 img.src
@@ -279,7 +280,10 @@ const Css3dMolecules = () => {
         const object = new CSS3DSprite(atom);
         // 拷贝 position 
         object.position.copy(position);
-        // position 与 75 进行相乘
+        /**
+         * position 与 75 进行相乘
+         * 使球散开
+         */
         object.position.multiplyScalar(75);
 
         // 禁用这个属性之后，它将不再计算每一帧的位移、旋转（四元变换）和缩放矩阵，并且不会重新计算 matrixWorld 属性
@@ -308,7 +312,10 @@ const Css3dMolecules = () => {
         start.fromBufferAttribute(positionBonds, i);
         end.fromBufferAttribute (positionBonds, i+1);
 
-        // 将 start 和 end 变量与所传入的标量 75 进行相乘。
+        /**
+         * 将 start 和 end 变量与所传入的标量 75 进行相乘。
+         * 使连接线散开
+         */
         start.multiplyScalar(75);
         end.multiplyScalar(75);
 
@@ -316,10 +323,11 @@ const Css3dMolecules = () => {
         tmpVec1.subVectors(end, start);
         /**
          * 获取终点和起点的距离
-         * todo：减 50？
+         * todo：减 50 使线在球中心
          */
         const bondLength = tmpVec1.length() - 50;
 
+        /* ---------- 水平连接线 ---------- */
         /**
          * 创建一个连接线 div Dom 元素
          * 添加类名：bond
@@ -336,13 +344,13 @@ const Css3dMolecules = () => {
         object.position.copy(start);
         /**
          * 朝着 end 进行插值 0.5
-         * todo：0.5？
+         * todo：0.5 否则太长
          */
         object.position.lerp(end, 0.5);
 
         /**
          * CSS3DObject 对象的长度备份到 userData
-         * todo：55？
+         * todo：55
          */
         object.userData.bondLengthShort = `${bondLength}px`;
         object.userData.bondLengthFull = `${bondLength + 55}px`;
@@ -380,11 +388,11 @@ const Css3dMolecules = () => {
         // 把 CSS3DObject（连接线div）对象添加到根对象中
         root.current.add(object);
 
-        // 把 CSS3DObject（连接线div）对象添加到 objects 对象数组中
+        // 把 CSS3DObject（水平连接线div）对象添加到 objects 对象数组中
         objects.push(object);
 
-        /* ---------- */
-
+        
+        /* ---------- 垂直连接线 ---------- */
         /**
          * 创建一个连接线 div Dom 元素
          * 添加类名：bond
@@ -395,7 +403,7 @@ const Css3dMolecules = () => {
         bond.style.height = bondLength + 'px';
 
         // 用连接线 div 创建一个 Object3D 对象
-        const joint = new THREE.Object3D(bond);
+        const joint = new THREE.Object3D();
         // 拷贝 start 起始位置 
         joint.position.copy(start);
         // 朝着 end 进行插值 0.5
@@ -426,6 +434,7 @@ const Css3dMolecules = () => {
          */
         object.userData.bondLengthShort = bondLength + 'px';
         object.userData.bondLengthFull = ( bondLength + 55 ) + 'px';
+        // 特别添加了 joint 数据
         object.userData.joint = joint;
 
         // 把 CSS3DObject 对象添加到 Object3D 对象中
@@ -433,7 +442,7 @@ const Css3dMolecules = () => {
         // 把 Object3D 对象添加到根对象中
         root.current.add(joint);
 
-        // 把 CSS3DObject（连接线div）对象添加到 objects 对象数组中
+        // 把 CSS3DObject（垂直连接线div）对象添加到 objects 对象数组中
         objects.push(object);
       }
       /* ----- geometryBonds end ----- */
