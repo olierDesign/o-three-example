@@ -540,3 +540,26 @@ const Css3dMolecules = () => {
 };
 
 export default Css3dMolecules;
+
+/**
+ * CSS3DRenderer: 
+ * 用于通过 CSS3 的 transform 属性， 将层级的 3D 变换应用到 DOM 元素上（eg.matrix3d）
+ * 渲染器的 domElement 是 div，而不是 canvas（不基于 canvas 的渲染）
+ * 
+ * 限制：
+ * 不使用 three.js 的材质系统，使用 html+css3
+ * 同时也不可能使用几何体，需要转换成 <img /> 或 <div /> 等
+ * 
+ * 总结：
+ * CSS3DRenderer 仅仅关注普通的 DOM 元素，元素可在 css 文件定义额外样式
+ * img 元素包含在 CSS3DSprite，div 元素包含在 CSS3DObject，然后加入到 scene 场景中
+ */
+
+/**
+ * 知识点：
+ * pdb 文件格式，是一种分子建模文件，由原子和连接线（BufferGeometry）组成，附带 json 数据属性
+ * 使用 three.js 的 PDBLoader 进行解析
+ * 
+ * 数学：
+ * 线性代数的几何意义、矩阵学需要附加学习
+ */
