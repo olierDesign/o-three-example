@@ -19,6 +19,9 @@ function PageGuide() {
         <li className="o-guide__item">
           <Link to="Css3dOrthographic">正交相机(Css3dOrthographic)</Link>
         </li>
+        <li className="o-guide__item">
+          <Link to="Css3dPeriodictable">周期表(Css3dPeriodictable)</Link>
+        </li>
       </ul>
     </div>
   );
