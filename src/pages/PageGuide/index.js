@@ -22,6 +22,9 @@ function PageGuide() {
         <li className="o-guide__item">
           <Link to="Css3dPeriodictable">周期表(Css3dPeriodictable)</Link>
         </li>
+        <li className="o-guide__item">
+          <Link to="Css3dSandbox">沙盒(Css3dSandbox)</Link>
+        </li>
       </ul>
     </div>
   );
