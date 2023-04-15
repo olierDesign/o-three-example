@@ -25,6 +25,9 @@ function PageGuide() {
         <li className="o-guide__item">
           <Link to="Css3dSandbox">沙盒(Css3dSandbox)</Link>
         </li>
+        <li className="o-guide__item">
+          <Link to="WebglCamera">相机 Helper(WebglCamera)</Link>
+        </li>
       </ul>
     </div>
   );

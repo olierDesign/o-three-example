@@ -6,6 +6,7 @@ import Css3dMolecules from './pages/examples/Css3dMolecules';
 import Css3dOrthographic from './pages/examples/Css3dOrthographic';
 import Css3dPeriodictable from './pages/examples/Css3dPeriodictable';
 import Css3dSandbox from './pages/examples/Css3dSandbox';
+import WebglCamera from './pages/examples/WebglCamera';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/Css3dOrthographic" element={<Css3dOrthographic/>} />
         <Route exact path="/Css3dPeriodictable" element={<Css3dPeriodictable/>} />
         <Route exact path="/Css3dSandbox" element={<Css3dSandbox/>} />
+        <Route exact path="/WebglCamera" element={<WebglCamera/>} />
       </Routes>
     </Router>
   );
