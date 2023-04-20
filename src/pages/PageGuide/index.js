@@ -29,6 +29,20 @@ function PageGuide() {
           <Link to="WebglCamera">相机 Helper(WebglCamera)</Link>
         </li>
       </ul>
+
+      <h3>WEBGL</h3>
+      <ul className="o-guide__list">
+        <li className="o-guide__item">
+          <Link to="WebglCamera">相机 Helper(WebglCamera)</Link>
+        </li>
+      </ul>
+
+      <h3>canvas3d</h3>
+      <ul className="o-guide__list">
+        <li className="o-guide__item">
+          <Link to="Cavans3D">Cavans3D</Link>
+        </li>
+      </ul>
     </div>
   );
 };
