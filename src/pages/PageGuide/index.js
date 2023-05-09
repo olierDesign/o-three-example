@@ -25,15 +25,15 @@ function PageGuide() {
         <li className="o-guide__item">
           <Link to="Css3dSandbox">沙盒(Css3dSandbox)</Link>
         </li>
-        <li className="o-guide__item">
-          <Link to="WebglCamera">相机 Helper(WebglCamera)</Link>
-        </li>
       </ul>
 
       <h3>WEBGL</h3>
       <ul className="o-guide__list">
         <li className="o-guide__item">
           <Link to="WebglCamera">相机 Helper(WebglCamera)</Link>
+        </li>
+        <li className="o-guide__item">
+          <Link to="WebglBuffergeometryCustomAttributesParticles">缓冲几何体自定义属性 (WebglBuffergeometryCustomAttributesParticles)</Link>
         </li>
       </ul>
 
