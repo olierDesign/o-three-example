@@ -37,10 +37,13 @@ function PageGuide() {
         </li>
       </ul>
 
-      <h3>canvas3d</h3>
+      <h3>PPT 示例</h3>
       <ul className="o-guide__list">
         <li className="o-guide__item">
-          <Link to="Cavans3D">Cavans3D</Link>
+          <Link to="PPTCavans3D">Cavans3D</Link>
+        </li>
+        <li className="o-guide__item">
+          <Link to="PPTCamera">Camera 相机调试</Link>
         </li>
       </ul>
     </div>

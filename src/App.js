@@ -8,7 +8,9 @@ import Css3dPeriodictable from './pages/examples/Css3dPeriodictable';
 import Css3dSandbox from './pages/examples/Css3dSandbox';
 import WebglCamera from './pages/examples/WebglCamera';
 import WebglBuffergeometryCustomAttributesParticles from './pages/examples/WebglBuffergeometryCustomAttributesParticles';
-import Cavans3D from './pages/examples/Cavans3D';
+
+import PPTCavans3D from './pages/ppt/Cavans3D';
+import PPTCamera from './pages/ppt/Camera';
 
 function App() {
   return (
@@ -24,7 +26,8 @@ function App() {
         <Route exact path="/WebglCamera" element={<WebglCamera/>} />
         <Route exact path="/WebglBuffergeometryCustomAttributesParticles" element={<WebglBuffergeometryCustomAttributesParticles/>} />
         
-        <Route exact path="/Cavans3D" element={<Cavans3D/>} />
+        <Route exact path="/PPTCavans3D" element={<PPTCavans3D/>} />
+        <Route exact path="/PPTCamera" element={<PPTCamera/>} />
       </Routes>
     </Router>
   );
