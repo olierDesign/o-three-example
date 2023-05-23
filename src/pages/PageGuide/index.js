@@ -35,6 +35,9 @@ function PageGuide() {
         <li className="o-guide__item">
           <Link to="WebglBuffergeometryCustomAttributesParticles">缓冲几何体自定义属性 (WebglBuffergeometryCustomAttributesParticles)</Link>
         </li>
+        <li className="o-guide__item">
+          <Link to="WebglBuffergeometrySelectiveDraw">缓冲几何体选择性绘制 (WebglBuffergeometrySelectiveDraw)</Link>
+        </li>
       </ul>
 
       <h3>PPT 示例</h3>
