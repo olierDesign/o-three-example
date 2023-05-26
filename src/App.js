@@ -1,14 +1,17 @@
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 import PageGuide from './pages/PageGuide';
+
 import Css2dLabel from './pages/examples/Css2dLabel';
 import Css3dMolecules from './pages/examples/Css3dMolecules';
 import Css3dOrthographic from './pages/examples/Css3dOrthographic';
 import Css3dPeriodictable from './pages/examples/Css3dPeriodictable';
 import Css3dSandbox from './pages/examples/Css3dSandbox';
+
 import WebglCamera from './pages/examples/WebglCamera';
 import WebglBuffergeometryCustomAttributesParticles from './pages/examples/WebglBuffergeometryCustomAttributesParticles';
 import WebglBuffergeometrySelectiveDraw from './pages/examples/WebglBuffergeometrySelectiveDraw';
+import WebglCustomAttributes from './pages/examples/WebglCustomAttributes';
 
 import PPTCavans3D from './pages/ppt/Cavans3D';
 import PPTCamera from './pages/ppt/Camera';
@@ -27,6 +30,7 @@ function App() {
         <Route exact path="/WebglCamera" element={<WebglCamera/>} />
         <Route exact path="/WebglBuffergeometryCustomAttributesParticles" element={<WebglBuffergeometryCustomAttributesParticles/>} />
         <Route exact path="/WebglBuffergeometrySelectiveDraw" element={<WebglBuffergeometrySelectiveDraw/>} />
+        <Route exact path="/WebglCustomAttributes" element={<WebglCustomAttributes/>} />
         
         <Route exact path="/PPTCavans3D" element={<PPTCavans3D/>} />
         <Route exact path="/PPTCamera" element={<PPTCamera/>} />
