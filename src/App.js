@@ -12,6 +12,7 @@ import WebglCamera from './pages/examples/WebglCamera';
 import WebglBuffergeometryCustomAttributesParticles from './pages/examples/WebglBuffergeometryCustomAttributesParticles';
 import WebglBuffergeometrySelectiveDraw from './pages/examples/WebglBuffergeometrySelectiveDraw';
 import WebglCustomAttributes from './pages/examples/WebglCustomAttributes';
+import WebglCustomAttributesLines from './pages/examples/WebglCustomAttributesLines';
 
 import PPTCavans3D from './pages/ppt/Cavans3D';
 import PPTCamera from './pages/ppt/Camera';
@@ -31,6 +32,7 @@ function App() {
         <Route exact path="/WebglBuffergeometryCustomAttributesParticles" element={<WebglBuffergeometryCustomAttributesParticles/>} />
         <Route exact path="/WebglBuffergeometrySelectiveDraw" element={<WebglBuffergeometrySelectiveDraw/>} />
         <Route exact path="/WebglCustomAttributes" element={<WebglCustomAttributes/>} />
+        <Route exact path="/WebglCustomAttributesLines" element={<WebglCustomAttributesLines/>} />
         
         <Route exact path="/PPTCavans3D" element={<PPTCavans3D/>} />
         <Route exact path="/PPTCamera" element={<PPTCamera/>} />

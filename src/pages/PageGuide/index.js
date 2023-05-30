@@ -39,7 +39,10 @@ function PageGuide() {
           <Link to="WebglBuffergeometrySelectiveDraw">缓冲几何体选择性绘制 (WebglBuffergeometrySelectiveDraw)</Link>
         </li>
         <li className="o-guide__item">
-          <Link to="WebglCustomAttributes">自定义属性 (WebglCustomAttributes)</Link>
+          <Link to="WebglCustomAttributes">着色器线段球 (WebglCustomAttributes)</Link>
+        </li>
+        <li className="o-guide__item">
+          <Link to="WebglCustomAttributesLines">着色器线形文字 (WebglCustomAttributesLines)</Link>
         </li>
       </ul>
 
