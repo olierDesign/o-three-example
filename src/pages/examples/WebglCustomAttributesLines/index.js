@@ -192,7 +192,17 @@ const WebglCustomAttributesLines = () => {
     <div id="container">
       <canvas ref={canvasRef}></canvas>
     </div>
-  )
+  );
 };
 
 export default WebglCustomAttributesLines;
+
+/**
+ * example 小结：
+ * 1、FontLoader：加载字体类型
+ * 2、TextGeometry：文本缓冲几何体创建文本
+ * 3、toArray 方法：把值添加到数组的指定位置
+ * 4、线Mesh = 文本几何体 + 着色器材质
+ * 5、顶点位置 = 原位置 + 振幅 * 位移
+ * 6、片段颜色 = 顶点颜色 * uniform 颜色
+ */

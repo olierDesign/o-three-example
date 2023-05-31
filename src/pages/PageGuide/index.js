@@ -44,6 +44,9 @@ function PageGuide() {
         <li className="o-guide__item">
           <Link to="WebglCustomAttributesLines">着色器线形文字 (WebglCustomAttributesLines)</Link>
         </li>
+        <li className="o-guide__item">
+          <Link to="WebglCustomAttributesPoints">着色器两种颜色分界点 (WebglCustomAttributesPoints)</Link>
+        </li>
       </ul>
 
       <h3>PPT 示例</h3>
