@@ -68,13 +68,14 @@ const PPTCamera = () => {
     // 问题：如果 mesh 初始坐标为 （0，0，150） ，是否会出现在局部相机视野中？ 
     // meshRef.current.position.z = 150;
     // 白球 Mesh添加到场景中
-    // sceneRef.current.add(meshRef.current);
+    sceneRef.current.add(meshRef.current);
 
     // 创建蓝球 Mesh：用来标记相机们的近端面
     const mesh3 = new THREE.Mesh(
       new THREE.SphereGeometry( 5, 16, 8 ),
       new THREE.MeshBasicMaterial( { color: 0x0000ff, wireframe: true } )
     );
+    // mesh3.position.z = -150;
     // 蓝球 Mesh添加到相机 Group
     // cameraRigRef.current.add(mesh3);
 
@@ -84,6 +85,7 @@ const PPTCamera = () => {
     // 方法二（不推荐，因为目标位置不确定性）：
     // cameraPerspectiveRef.current.rotation.y = Math.PI;
     // 方法三（推荐）：
+    // cameraPerspectiveRef.current.position.x = 500;
     // cameraPerspectiveRef.current.lookAt(meshRef.current.position);
 
     // 问题：假设相机在 Group 里，调试 Group 的 position、lookAt，是否能让 mesh 出现在局部相机视野中？

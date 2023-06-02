@@ -64,6 +64,9 @@ const Css3dOrthographic = () => {
     mesh.rotation.copy(object.rotation);
     // 把 mesh 放入场景 scene 中
     scene.current.add(mesh);
+
+    const axesHelper = new THREE.AxesHelper( 1000 );
+    scene.current.add( axesHelper );
   };
 
   /** 初始化 */
@@ -88,7 +91,9 @@ const Css3dOrthographic = () => {
       1,
       1000
     );
-    camera.current.position.set(-200, 200, 200);
+    // camera.current.position.set(-200, 200, 200);
+    camera.current.position.set(0, 0, 200);
+
 
     /**
      * 创建场景一
