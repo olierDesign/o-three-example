@@ -77,7 +77,7 @@ const PPTCamera = () => {
     );
     // mesh3.position.z = -150;
     // 蓝球 Mesh添加到相机 Group
-    // cameraRigRef.current.add(mesh3);
+    cameraRigRef.current.add(mesh3);
 
     // 问题：调试相机的 position、lookAt，是否能让 mesh 出现在局部相机视野中？ 
     // 方法一（不推荐，因为目标位置不确定性）：
@@ -93,7 +93,7 @@ const PPTCamera = () => {
     // cameraRigRef.current.position.z = 500;
     // 方法二（推荐）：
     // cameraRigRef.current.position.x = 500;
-    // cameraPerspectiveRef.current.rotation.y = Math.PI;
+    cameraPerspectiveRef.current.rotation.y = Math.PI;
     // cameraRigRef.current.lookAt(meshRef.current.position);
 
     const axesHelper = new THREE.AxesHelper( 1000 );
@@ -125,15 +125,15 @@ const PPTCamera = () => {
     const r = Date.now() * 0.0005;
 
     // 更新白球 position 位置（不再在中心点）
-    // meshRef.current.position.x = 700 * Math.cos(r);
-    // meshRef.current.position.y = 700 * Math.sin(r);
-    // meshRef.current.position.z = 700 * Math.sin(r);
+    meshRef.current.position.x = 700 * Math.cos(r);
+    meshRef.current.position.y = 700 * Math.sin(r);
+    meshRef.current.position.z = 700 * Math.sin(r);
 
     // 白球自转
     meshRef.current.rotation.y = r;
 
     // 设置透视相机的 far：从(0, 0, 0) 到 白球位置(x, y, z)的直线长度
-    // cameraPerspectiveRef.current.far = meshRef.current.position.length();
+    cameraPerspectiveRef.current.far = meshRef.current.position.length();
     // 更新透视摄像机投影矩阵
     cameraPerspectiveRef.current.updateProjectionMatrix();
     // 更新透视相机 Helper
@@ -141,7 +141,7 @@ const PPTCamera = () => {
 
     // 相机组朝向白球 Mesh (相机组仍然在中心点)
     // cameraPerspectiveRef.current.lookAt(meshRef.current.position);
-    // cameraRigRef.current.lookAt(meshRef.current.position);
+    cameraRigRef.current.lookAt(meshRef.current.position);
 
     // 渲染器清除颜色、深度或模板缓存
     rendererRef.current.clear();
