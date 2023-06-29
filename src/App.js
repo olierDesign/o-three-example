@@ -15,6 +15,7 @@ import WebglCustomAttributes from './pages/examples/WebglCustomAttributes';
 import WebglCustomAttributesLines from './pages/examples/WebglCustomAttributesLines';
 import WebglCustomAttributesPoints from './pages/examples/WebglCustomAttributesPoints';
 import WebglCustomAttributesPoints2 from './pages/examples/WebglCustomAttributesPoints2';
+import WebglCustomAttributesPoints3 from './pages/examples/WebglCustomAttributesPoints3';
 
 import PPTCavans3D from './pages/ppt/Cavans3D';
 import PPTCamera from './pages/ppt/Camera';
@@ -37,6 +38,7 @@ function App() {
         <Route exact path="/WebglCustomAttributesLines" element={<WebglCustomAttributesLines/>} />
         <Route exact path="/WebglCustomAttributesPoints" element={<WebglCustomAttributesPoints/>} />
         <Route exact path="/WebglCustomAttributesPoints2" element={<WebglCustomAttributesPoints2/>} />
+        <Route exact path="/WebglCustomAttributesPoints3" element={<WebglCustomAttributesPoints3/>} />
         
         <Route exact path="/PPTCavans3D" element={<PPTCavans3D/>} />
         <Route exact path="/PPTCamera" element={<PPTCamera/>} />

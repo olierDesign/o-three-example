@@ -50,6 +50,10 @@ function PageGuide() {
         <li className="o-guide__item">
           <Link to="WebglCustomAttributesPoints2">着色器两种几何体组合 (WebglCustomAttributesPoints2)</Link>
         </li>
+        <li className="o-guide__item">
+          <Link to="WebglCustomAttributesPoints3">着色器两种几何体组合 (WebglCustomAttributesPoints3)</Link>
+        </li>
+        
       </ul>
 
       <h3>PPT 示例</h3>
