@@ -53,6 +53,9 @@ function PageGuide() {
         <li className="o-guide__item">
           <Link to="WebglCustomAttributesPoints3">着色器两种几何体组合 (WebglCustomAttributesPoints3)</Link>
         </li>
+        <li className="o-guide__item">
+          <Link to="WebglGpgpuBirds">着色器鸟群 todo (WebglGpgpuBirds)</Link>
+        </li>
         
       </ul>
 
