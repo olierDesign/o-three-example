@@ -67,6 +67,17 @@ function PageGuide() {
         <li className="o-guide__item">
           <Link to="PPTCamera">Camera 相机调试</Link>
         </li>
+        <li className="o-guide__item">
+          <Link to="PPTDynamicMap">动态贴图</Link>
+        </li>
+        
+      </ul>
+
+      <h3>测试 示例</h3>
+      <ul className="o-guide__list">
+        <li className="o-guide__item">
+          <Link to="TestDirectionalLight">平行光</Link>
+        </li>
       </ul>
     </div>
   );

@@ -20,6 +20,9 @@ import WebglGpgpuBirds from './pages/examples/WebglGpgpuBirds';
 
 import PPTCavans3D from './pages/ppt/Cavans3D';
 import PPTCamera from './pages/ppt/Camera';
+import PPTDynamicMap from './pages/ppt/DynamicMap';
+
+import TestDirectionalLight from './pages/test/DirectionalLight';
 
 function App() {
   return (
@@ -44,6 +47,9 @@ function App() {
         
         <Route exact path="/PPTCavans3D" element={<PPTCavans3D/>} />
         <Route exact path="/PPTCamera" element={<PPTCamera/>} />
+        <Route exact path="/PPTDynamicMap" element={<PPTDynamicMap/>} />
+
+        <Route exact path="/TestDirectionalLight" element={<TestDirectionalLight/>} />
       </Routes>
     </Router>
   );
