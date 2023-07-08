@@ -33,6 +33,10 @@ const WebglBuffergeometryCustomAttributesParticles = () => {
     // 获取所有粒子的尺寸数组
     const sizes = geometryRef.current.attributes.size.array;
     for (let i = 0; i < particles; i++) {
+      /** 
+       * 所有点的大小范围
+       * 单个点的缩放范围
+       */
       sizes[i] = 10 * (1 + Math.sin(0.1 * i + time)); // 0 ~ 20
     }
     // 更新size属性
