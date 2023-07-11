@@ -296,7 +296,7 @@ const WebglCamera = () => {
   }, []);
 
   return (
-    <div id="container"></div>
+    <div id="container" className="examples__webgl-camera"></div>
   );
 };
 
