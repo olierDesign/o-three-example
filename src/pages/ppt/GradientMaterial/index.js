@@ -94,11 +94,23 @@ export default function GradientMaterial(props) {
     render();
   }
 
+  /** 屏幕尺寸变化 */
+  function onWindowResize() {
+    cameraRef.current.aspect = window.innerWidth / window.innerHeight;
+    cameraRef.current.updateProjectionMatrix();
+    rendererRef.current.setSize(window.innerWidth, window.innerHeight);
+  };
+
   /* ---------- useEffect ---------- */
   useEffect(() => {
     if (!sceneRef.current) {
       init();
       animate();
+    }
+    window.addEventListener('resize', onWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', onWindowResize);
     }
   }, [])
 

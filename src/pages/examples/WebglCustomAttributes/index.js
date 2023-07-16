@@ -104,9 +104,6 @@ const WebglCustomAttributes = () => {
     });
     rendererRef.current.setPixelRatio(window.devicePixelRatio);
     rendererRef.current.setSize(window.innerWidth, window.innerHeight);
-
-    // 
-    window.addEventListener( 'resize', onWindowResize );
   };
 
   /** 渲染 */
@@ -150,9 +147,10 @@ const WebglCustomAttributes = () => {
       init();
       animate();
     }
+    window.addEventListener( 'resize', onWindowResize );
 
     return () => {
-      window.addEventListener('resize', onWindowResize);
+      window.removeEventListener('resize', onWindowResize);
     }
   }, []);
 

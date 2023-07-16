@@ -24,6 +24,7 @@ import PPTDynamicMap from './pages/ppt/DynamicMap';
 import PPTPortalDynamicMap from './pages/ppt/PortalDynamicMap';
 import PPTGradientTexture from './pages/ppt/GradientTexture';
 import PPTGradientMaterial from './pages/ppt/GradientMaterial';
+import PPTGradientGltf from './pages/ppt/GradientGltf';
 
 import TestDirectionalLight from './pages/test/DirectionalLight';
 
@@ -54,6 +55,7 @@ function App() {
         <Route exact path="/PPTPortalDynamicMap" element={<PPTPortalDynamicMap/>} />
         <Route exact path="/PPTGradientTexture" element={<PPTGradientTexture/>} />
         <Route exact path="/PPTGradientMaterial" element={<PPTGradientMaterial/>} />
+        <Route exact path="/PPTGradientGltf" element={<PPTGradientGltf/>} />
 
         <Route exact path="/TestDirectionalLight" element={<TestDirectionalLight/>} />
       </Routes>

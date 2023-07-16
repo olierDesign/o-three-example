@@ -79,6 +79,9 @@ function PageGuide() {
         <li className="o-guide__item">
           <Link to="PPTGradientMaterial">渐变材质</Link>
         </li>
+        <li className="o-guide__item">
+          <Link to="PPTGradientGltf">渐变模型</Link>
+        </li>
       </ul>
 
       <h3>测试 示例</h3>

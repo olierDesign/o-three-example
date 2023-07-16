@@ -131,11 +131,11 @@ const WebglBuffergeometryCustomAttributesParticles = () => {
     if (!sceneRef.current) {
       init();
       animate();
-      window.addEventListener('resize', onWindowResize);
     }
+    window.addEventListener('resize', onWindowResize);
 
     return () => {
-      window.addEventListener('resize', onWindowResize);
+      window.removeEventListener('resize', onWindowResize);
     }
   }, []);
 
