@@ -22,6 +22,8 @@ import PPTCavans3D from './pages/ppt/Cavans3D';
 import PPTCamera from './pages/ppt/Camera';
 import PPTDynamicMap from './pages/ppt/DynamicMap';
 import PPTPortalDynamicMap from './pages/ppt/PortalDynamicMap';
+import PPTGradientTexture from './pages/ppt/GradientTexture';
+import PPTGradientMaterial from './pages/ppt/GradientMaterial';
 
 import TestDirectionalLight from './pages/test/DirectionalLight';
 
@@ -50,6 +52,8 @@ function App() {
         <Route exact path="/PPTCamera" element={<PPTCamera/>} />
         <Route exact path="/PPTDynamicMap" element={<PPTDynamicMap/>} />
         <Route exact path="/PPTPortalDynamicMap" element={<PPTPortalDynamicMap/>} />
+        <Route exact path="/PPTGradientTexture" element={<PPTGradientTexture/>} />
+        <Route exact path="/PPTGradientMaterial" element={<PPTGradientMaterial/>} />
 
         <Route exact path="/TestDirectionalLight" element={<TestDirectionalLight/>} />
       </Routes>

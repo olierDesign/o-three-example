@@ -13,7 +13,7 @@ export default function PortalDynamicMap(props) {
   /* ---------- state ---------- */
   // 画布
   const canvasRef = useRef(null);
-  // 创景
+  // 场景
   const sceneRef = useRef(null);
   // 渲染器
   const rendererRef = useRef(null);

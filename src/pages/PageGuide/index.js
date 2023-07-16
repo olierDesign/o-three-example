@@ -73,6 +73,12 @@ function PageGuide() {
         <li className="o-guide__item">
           <Link to="PPTPortalDynamicMap">官网动态贴图</Link>
         </li>
+        <li className="o-guide__item">
+          <Link to="PPTGradientTexture">渐变贴图</Link>
+        </li>
+        <li className="o-guide__item">
+          <Link to="PPTGradientMaterial">渐变材质</Link>
+        </li>
       </ul>
 
       <h3>测试 示例</h3>
