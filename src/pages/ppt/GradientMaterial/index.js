@@ -47,6 +47,8 @@ export default function GradientMaterial(props) {
     // 计算几何体范围
     const geoBoundingSize = new THREE.Vector3().subVectors(geoBoundingBox.max, geoBoundingBox.min);
     
+    // 轴的数量
+    const axisLength = axis.split('');
     // “位置变量”在“边界矩形”范围内的“标准化设备坐标”
     const normalized = new THREE.Vector3();
     // “标准化设备坐标”中 axis 轴的值
@@ -68,7 +70,21 @@ export default function GradientMaterial(props) {
 
       for (let i = 0; i < geoPositions.count; i++) {
         posVector.fromArray(geoPositions.array, i * 3);
-        normalizedAxis = normalized.subVectors(posVector, geoBoundingBox.min).divide(geoBoundingSize)[axis];
+        normalized.subVectors(posVector, geoBoundingBox.min).divide(geoBoundingSize);
+
+        switch (axisLength.length) {
+          case 2: {
+            normalizedAxis = (normalized[axisLength[0]] + normalized[axisLength[1]]) / axisLength.length;
+            break;
+          };
+          case 3: {
+            normalizedAxis = (normalized[axisLength[0]] + normalized[axisLength[1]] + normalized[axisLength[2]]) / axisLength.length;
+            break;
+          };
+          default: {
+            normalizedAxis = normalized[axisLength[0]];
+          }
+        }
 
         // 反向处理
         if (reverse) {
@@ -104,7 +120,7 @@ export default function GradientMaterial(props) {
 
     // 创建几何体
     const geometry = new THREE.BoxGeometry(100, 100, 100);
-    setGradient(geometry, gradientColors, 'z', false);
+    setGradient(geometry, gradientColors, 'xyz', true);
 
     // 创建材质
     const material = new THREE.MeshStandardMaterial({
