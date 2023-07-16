@@ -27,8 +27,8 @@ export default function GradientTexture(props) {
     canvas.height = 40;
     const context = canvas.getContext('2d');
     const gradient = context.createLinearGradient(0, canvas.height, canvas.width, 0);
-    gradient.addColorStop(0,"black");
-    gradient.addColorStop(1,"white");
+    gradient.addColorStop(0, '#ff0000');
+    gradient.addColorStop(1, '#0000ff');
     context.fillStyle = gradient;
     context.fillRect(0, 0, canvas.width, canvas.height);
 
