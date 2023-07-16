@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
+import setGradient from '../../../utils/setGradient';
+
 import './css/GradientMaterial.scss'
 
 export default function GradientMaterial(props) {
@@ -32,79 +34,6 @@ export default function GradientMaterial(props) {
   ]
 
   /* ---------- function ---------- */
-  /**
-   * 设置渐变
-   * @param {*} geometry  几何体
-   * @param {*} colors    渐变颜色
-   * @param {*} axis      渐变轴
-   * @param {*} reverse   是否反向
-   */
-  function setGradient(geometry, colors, axis, reverse) {
-    // 计算当前几何体的的边界矩形
-    geometry.computeBoundingBox();
-    // 获取几何体的外边界矩形 (Box3)
-    const geoBoundingBox = geometry.boundingBox;
-    // 计算几何体范围
-    const geoBoundingSize = new THREE.Vector3().subVectors(geoBoundingBox.max, geoBoundingBox.min);
-    
-    // 轴的数量
-    const axisLength = axis.split('');
-    // “位置变量”在“边界矩形”范围内的“标准化设备坐标”
-    const normalized = new THREE.Vector3();
-    // “标准化设备坐标”中 axis 轴的值
-    let normalizedAxis = 0;
-
-    // 位置列表
-    const geoPositions = geometry.attributes.position;
-    // 位置临时变量
-    const posVector = new THREE.Vector3();
-    // 颜色列表
-    const geoColors = [];
-    // 颜色临时变量
-    const colorVector = new THREE.Color();
-
-    // 遍历渐变颜色数组
-    for (let c = 0; c < colors.length - 1; c++) {
-      // 计算相邻颜色的色差
-      const colorDiff = colors[c + 1].stop - colors[c].stop;
-
-      for (let i = 0; i < geoPositions.count; i++) {
-        posVector.fromArray(geoPositions.array, i * 3);
-        normalized.subVectors(posVector, geoBoundingBox.min).divide(geoBoundingSize);
-
-        switch (axisLength.length) {
-          case 2: {
-            normalizedAxis = (normalized[axisLength[0]] + normalized[axisLength[1]]) / axisLength.length;
-            break;
-          };
-          case 3: {
-            normalizedAxis = (normalized[axisLength[0]] + normalized[axisLength[1]] + normalized[axisLength[2]]) / axisLength.length;
-            break;
-          };
-          default: {
-            normalizedAxis = normalized[axisLength[0]];
-          }
-        }
-
-        // 反向处理
-        if (reverse) {
-          normalizedAxis = 1 - normalizedAxis;
-        }
-
-        // 根据坐标轴的值计算颜色
-        if (normalizedAxis >= colors[c].stop && normalizedAxis <= colors[c + 1].stop) {
-          // 计算颜色区间中，当前位置的颜色比例
-          const localNormalizedAxis = (normalizedAxis - colors[c].stop) / colorDiff;
-          // 将 colorVector 设置为线性插值颜色 colors[c] 和 colors[c+1] 
-          colorVector.lerpColors(colors[c].color, colors[c+1].color, localNormalizedAxis);
-          colorVector.toArray(geoColors, i * 3);
-        }
-      }
-    }
-
-    geometry.setAttribute('color', new THREE.Float32BufferAttribute(geoColors, 3));
-  }
-
   /** 初始函数 */
   function init() {
     // 创建相机
@@ -119,8 +48,17 @@ export default function GradientMaterial(props) {
     sceneRef.current.add( light );
 
     // 创建几何体
-    const geometry = new THREE.BoxGeometry(100, 100, 100);
-    setGradient(geometry, gradientColors, 'xyz', true);
+    const geometry = setGradient({
+      geometry: new THREE.BoxGeometry(100, 100, 100),
+      colors: gradientColors,
+      axis: 'xyz',
+      reverse: true,
+      rotation: {
+        x: 0,
+        y: -Math.PI / 2,
+        z: 0,
+      }
+    });
 
     // 创建材质
     const material = new THREE.MeshStandardMaterial({
