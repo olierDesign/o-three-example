@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import * as THREE from 'three';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
@@ -102,7 +103,12 @@ export default function GradientGltf(props) {
 
   // 加载 glb
   const handleGltf = (url) => new Promise((resolve) => {
-    new GLTFLoader().load(url, (gltf) => {
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath(`${process.env.PUBLIC_URL}/libs/draco/`);
+
+    const gltfLoader = new GLTFLoader();
+    gltfLoader.setDRACOLoader(dracoLoader);
+    gltfLoader.load(url, (gltf) => {
       gltfRef.current = gltf;
 
       const {scene, animations} = gltf;
@@ -160,7 +166,7 @@ export default function GradientGltf(props) {
     sceneRef.current.add(groupRef.current);
 
     // 创建透视相机
-    cameraRef.current = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
+    cameraRef.current = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
     cameraRef.current.position.set(0, 10, 50);
     cameraRef.current.lookAt(groupRef.current.position);
     // 添加相机到场景
