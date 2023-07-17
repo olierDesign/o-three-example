@@ -19,13 +19,10 @@ function setGradient(config) {
     rotation
   } = config;
 
-  // 复制临时几何体
-  const temGeometry = geometry.clone();
-
   // 计算当前几何体的的边界矩形
-  temGeometry.computeBoundingBox();
+  geometry.computeBoundingBox();
   // 获取几何体的外边界矩形 (Box3)
-  const geoBoundingBox = temGeometry.boundingBox;
+  const geoBoundingBox = geometry.boundingBox;
   // 计算几何体范围
   const geoBoundingSize = new THREE.Vector3().subVectors(geoBoundingBox.max, geoBoundingBox.min);
   
@@ -37,7 +34,7 @@ function setGradient(config) {
   let normalizedAxis = 0;
 
   // 位置列表
-  const geoPositions = temGeometry.attributes.position;
+  const geoPositions = geometry.attributes.position;
   // 位置临时变量
   const posVector = new THREE.Vector3();
   // 颜色列表
@@ -99,10 +96,8 @@ function setGradient(config) {
   }
 
   // 设置几何体的颜色属性
-  temGeometry.setAttribute('color', new THREE.Float32BufferAttribute(geoColors, 3));
-  temGeometry.attributes.color.needsUpdate = true;
-
-  return temGeometry;
+  geometry.setAttribute('color', new THREE.Float32BufferAttribute(geoColors, 3));
+  geometry.attributes.color.needsUpdate = true;
 }
 
 export default setGradient;

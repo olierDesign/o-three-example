@@ -3,11 +3,29 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import setGradient from '../../../utils/setGradient';
 
 import "./css/GradientGltf.scss";
 
 export default function GradientGltf(props) {
+  /* ---------- variable ---------- */
   const comCls = 'ppt__gradient-gltf';
+
+  // 渐变颜色列表
+  const gradientColors = [
+    {
+      stop: 0,
+      color: new THREE.Color(1, 0, 0),
+    },
+    {
+      stop: 0.5,
+      color: new THREE.Color(0, 0, 1),
+    },
+    {
+      stop: 1,
+      color: new THREE.Color(0, 0, 1),
+    }
+  ];
 
   /* ---------- useState ---------- */
   const [glbUrl, setGlbUrl] = useState();
@@ -88,6 +106,30 @@ export default function GradientGltf(props) {
       gltfRef.current = gltf;
 
       const {scene, animations} = gltf;
+      
+      // 遍历模型中的所有后代
+      scene.traverse(obj => {
+        if (obj.isMesh) {
+          // 材质 - 使用顶点着色
+          obj.material.vertexColors = true;
+          // 材质 - 重新编译材质
+          obj.material.needsUpdate = true;
+
+          // 设置渐变
+          setGradient({
+            geometry: obj.geometry,
+            colors: gradientColors,
+            axis: 'xyz',
+            reverse: true,
+            rotation: {
+              x: 0,
+              y: -Math.PI / 2,
+              z: 0,
+            }
+          });
+        }
+      });
+
       groupRef.current.clear();
       groupRef.current.add(scene);
       
@@ -107,6 +149,10 @@ export default function GradientGltf(props) {
 
     // 创建场景
     sceneRef.current = new THREE.Scene();
+
+    // 添加一个环境光
+    const light = new THREE.AmbientLight(0xffffff); // 柔和的白光
+    sceneRef.current.add(light);
 
     // 创建组
     groupRef.current = new THREE.Group();

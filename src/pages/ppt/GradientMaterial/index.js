@@ -31,7 +31,7 @@ export default function GradientMaterial(props) {
       stop: 1,
       color: new THREE.Color(0, 0, 1),
     }
-  ]
+  ];
 
   /* ---------- function ---------- */
   /** 初始函数 */
@@ -48,8 +48,9 @@ export default function GradientMaterial(props) {
     sceneRef.current.add( light );
 
     // 创建几何体
-    const geometry = setGradient({
-      geometry: new THREE.BoxGeometry(100, 100, 100),
+    const geometry = new THREE.BoxGeometry(100, 100, 100);
+    setGradient({
+      geometry,
       colors: gradientColors,
       axis: 'xyz',
       reverse: true,
