@@ -4,6 +4,7 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment'
 import setGradient from '../../../utils/setGradient';
 
 import "./css/GradientGltf.scss";
@@ -156,10 +157,6 @@ export default function GradientGltf(props) {
     // 创建场景
     sceneRef.current = new THREE.Scene();
 
-    // 添加一个环境光
-    const light = new THREE.AmbientLight(0xffffff); // 柔和的白光
-    sceneRef.current.add(light);
-
     // 创建组
     groupRef.current = new THREE.Group();
     groupRef.current.name = 't-group';
@@ -181,6 +178,11 @@ export default function GradientGltf(props) {
     rendererRef.current.outputEncoding = THREE.sRGBEncoding;
     rendererRef.current.setSize(window.innerWidth, window.innerHeight);
     rendererRef.current.setPixelRatio(window.devicePixelRatio);
+
+    // 预计算辐射环境贴图生成器
+    const pmremGenerator = new THREE.PMREMGenerator(rendererRef.current);
+    // sceneRef.current.background = pmremGenerator.fromScene( new RoomEnvironment(), 0 ).texture;
+    sceneRef.current.environment = pmremGenerator.fromScene( new RoomEnvironment(), 0.04 ).texture;
 
     // 创建时间
     clockRef.current = new THREE.Clock();
