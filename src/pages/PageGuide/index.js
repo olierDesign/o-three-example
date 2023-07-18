@@ -89,6 +89,9 @@ function PageGuide() {
         <li className="o-guide__item">
           <Link to="TestDirectionalLight">平行光</Link>
         </li>
+        <li className="o-guide__item">
+          <Link to="TestRoomEnvironment">房间环境</Link>
+        </li>
       </ul>
     </div>
   );
