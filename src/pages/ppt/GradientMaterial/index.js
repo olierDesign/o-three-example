@@ -43,6 +43,10 @@ export default function GradientMaterial(props) {
     // 创建场景
     sceneRef.current = new THREE.Scene();
 
+    // 创建坐标辅助对象
+    const axesHelper = new THREE.AxesHelper(200);
+    sceneRef.current.add(axesHelper);
+
     // 创建环境光
     const light = new THREE.AmbientLight(new THREE.Color(1, 1, 1)); // 柔和的白光
     sceneRef.current.add( light );
