@@ -97,7 +97,10 @@ export default function GradientMaterial(props) {
     rendererRef.current.render(sceneRef.current, cameraRef.current);
     orbitControlRef.current.update();
 
-    /** 渐变动画 start */
+    /**
+     * 渐变动画 start
+     * 性能问题：禁用
+     */
     // 时间
     const time = clockRef.current.getElapsedTime();
     // "位置比例值"偏移量
