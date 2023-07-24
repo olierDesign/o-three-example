@@ -21,7 +21,7 @@ export default function GradientGltf(props) {
     },
     {
       stop: 0.5,
-      color: new THREE.Color(0, 0, 1),
+      color: new THREE.Color(0, 1, 0),
     },
     {
       stop: 1,

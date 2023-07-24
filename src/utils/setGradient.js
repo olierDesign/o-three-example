@@ -32,6 +32,8 @@ function setGradient(config) {
   const normalized = new THREE.Vector3();
   // 位置比例值
   let normalizedAxis = 0;
+  // 位置比例列表
+  const normalizedAxisList = [];
 
   // 位置列表
   const geoPositions = geometry.attributes.position;
@@ -91,6 +93,9 @@ function setGradient(config) {
         colorVector.lerpColors(colors[c].color, colors[c+1].color, localNormalizedAxis);
         // 存储在颜色属性数组中
         colorVector.toArray(geoColors, i * 3);
+
+        // 存储各个颜色区间的“位置比例值”
+        normalizedAxisList.push(normalizedAxis);
       }
     }
   }
@@ -98,6 +103,8 @@ function setGradient(config) {
   // 设置几何体的颜色属性
   geometry.setAttribute('color', new THREE.Float32BufferAttribute(geoColors, 3));
   geometry.attributes.color.needsUpdate = true;
+  // 把每个顶点的“位置比例值”存储在几何体的 userData 中
+  geometry.userData.normalizedAxisList = normalizedAxisList;
 }
 
 export default setGradient;
