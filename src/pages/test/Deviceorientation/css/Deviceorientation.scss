@@ -17,6 +17,31 @@ $comCls: test__device-orientation;
   }
   /* ********** 布局 end ********** */
 
+  /* ********** 蒙层 start ********** */
+  &-mask {
+    position: fixed;
+    z-index: 9;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: rgba($color: #000000, $alpha: 1);
+    opacity: 1;
+    visibility: visible;
+    transition: all .2s ease-out;
+
+    &.is-hide {
+      z-index: -1;
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  /* ********** 蒙层 end ********** */
+
   /* ********** 按钮 start ********** */
   &-btn {
     position: relative;
@@ -52,4 +77,18 @@ $comCls: test__device-orientation;
     margin-left: 8px;
   }
   /* ********** 按钮 end ********** */
+
+  /* ********** 画布 start ********** */
+  canvas {
+    display: block;
+  }
+  /* ********** 画布 end ********** */
+
+  /* ********** 详情 start ********** */
+  &-detail {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+  /* ********** 详情 end ********** */
 }
