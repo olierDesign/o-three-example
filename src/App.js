@@ -28,6 +28,7 @@ import PPTGradientGltf from './pages/ppt/GradientGltf';
 
 import TestDirectionalLight from './pages/test/DirectionalLight';
 import TestRoomEnvironment from './pages/test/RoomEnvironment';
+import TestDeviceorientation from './pages/test/Deviceorientation';
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
 
         <Route exact path="/TestDirectionalLight" element={<TestDirectionalLight/>} />
         <Route exact path="/TestRoomEnvironment" element={<TestRoomEnvironment/>} />
+        <Route exact path="/TestDeviceorientation" element={<TestDeviceorientation/>} />
       </Routes>
     </Router>
   );

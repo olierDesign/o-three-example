@@ -92,6 +92,9 @@ function PageGuide() {
         <li className="o-guide__item">
           <Link to="TestRoomEnvironment">房间环境</Link>
         </li>
+        <li className="o-guide__item">
+          <Link to="TestDeviceorientation">重力测试</Link>
+        </li>
       </ul>
     </div>
   );
