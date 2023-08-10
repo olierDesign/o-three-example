@@ -150,6 +150,9 @@ export default function Model(props) {
 
       if (now - pre > 16.6) {
         pre = now - ((now - pre) % 16.6);
+        // 更新补间动画
+        TWEEN.update();
+        // 渲染
         render();
       }
     };
@@ -194,13 +197,13 @@ export default function Model(props) {
     if (!orientation) return;
 
     const { gamma } = orientation;
-    groupRef.current.rotation.y = gamma;
+    // groupRef.current.rotation.y = gamma;
 
-    // TWEEN.removeAll();
-    // new TWEEN.Tween(groupRef.current.rotation)
-    //   .to({x: 0, y: gamma, z: 0}, 200)
-    //   .onUpdate(render)
-    //   .start();
+    TWEEN.removeAll();
+    new TWEEN.Tween(groupRef.current.rotation)
+      .to({x: 0, y: gamma, z: 0}, 200)
+      .onUpdate(render)
+      .start();
   }, [orientation]);
 
   return (
