@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import classnames from "classnames";
 
+import { useShouldRenderModel } from '../../../utils/hooks/useShouldRenderModel';
+
 import Model from './Model';
 
 import "./css/Deviceorientation.scss";
@@ -10,6 +12,7 @@ export default function Deviceorientation(props) {
   const comCls = "test__device-orientation";
 
   /* ---------- useRef ---------- */
+  const [shouldRenderModel] = useShouldRenderModel();
 
   /* ---------- useState ---------- */
   const [orientation, setOrientation] = useState({
