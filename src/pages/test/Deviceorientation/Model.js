@@ -3,6 +3,9 @@ import * as THREE from "three";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
+
+import TWEEN from '@tweenjs/tween.js';
+
 import testGlb from "./static/test.glb";
 import testHdr from "./static/test.hdr";
 
@@ -10,6 +13,7 @@ export default function Model(props) {
   const {
     orientation
   } = props;
+
   /* ---------- variable ---------- */
   const comCls = "test__device-orientation";
 
@@ -76,9 +80,20 @@ export default function Model(props) {
             !!localClip && mixerRef.current.clipAction(localClip).play();
           });
         }
+
+        resolve(gltf);
       });
     })
   );
+
+  // 渲染
+  const render = () => {
+    rendererRef.current.render(sceneRef.current, cameraRef.current);
+
+    if (mixerRef.current) {
+      mixerRef.current.update(clockRef.current.getDelta());
+    }
+  };
 
   // 初始函数
   const init = () => {
@@ -135,11 +150,7 @@ export default function Model(props) {
 
       if (now - pre > 16.6) {
         pre = now - ((now - pre) % 16.6);
-        rendererRef.current.render(sceneRef.current, cameraRef.current);
-
-        if (mixerRef.current) {
-          mixerRef.current.update(clockRef.current.getDelta());
-        }
+        render();
       }
     };
     animate();
@@ -160,10 +171,13 @@ export default function Model(props) {
     rendererRef.current.setSize(window.innerWidth, window.innerHeight);
   };
 
+  /* ---------- useEffect ---------- */
+  // 初始化
   useEffect(() => {
     if (!sceneRef.current) {
       !!reqId.current && cancelAnimationFrame(reqId.current);
       
+      // 初始化场景 & 加载完 hdr 后再添加
       Promise.all([init(), handleHdr(testHdr)]).then(() => {
         handleGltf(testGlb)
       });
@@ -175,11 +189,18 @@ export default function Model(props) {
     };
   }, []);
 
+  // 重力值改变
   useEffect(() => {
     if (!orientation) return;
 
     const { gamma } = orientation;
     groupRef.current.rotation.y = gamma;
+
+    // TWEEN.removeAll();
+    // new TWEEN.Tween(groupRef.current.rotation)
+    //   .to({x: 0, y: gamma, z: 0}, 200)
+    //   .onUpdate(render)
+    //   .start();
   }, [orientation]);
 
   return (

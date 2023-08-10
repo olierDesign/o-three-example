@@ -19,8 +19,21 @@ export default function Deviceorientation(props) {
   });
   const [maskVisible, setMaskVisible] = useState(true);
 
+  // 防抖函数
+  const debounce = (fn, delay) => {
+    let timer = 0;
+
+    return (...args) => {
+      const self = this;
+      timer && clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        fn.apply(self, args);
+      }, delay);
+    };
+  };
+
   // 重力感应
-  const handleDeviceOrientation = e => {
+  const handleDeviceOrientation = (e) => {
     // beta表示设备绕x轴倾斜的角度（-180到180度）
     const beta = (Math.floor(e.beta) * 10) / 1000;
     // gamma表示设备绕y轴倾斜的角度（-90到90度）
