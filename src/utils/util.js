@@ -33,3 +33,13 @@ export const checkIs360 = (ua) => {
 export const checkIsSougou = (ua) => {
   return /(metasr)[/ ]?([\w.]+)/i.test(ua);
 };
+
+export const matchMedia = (responseWidth) => {
+  // Safari 浏览器 media 查询和 window.innerWidth <= responseWidth 对于移动端的判定不一致，导致前端逻辑和样式应用不一致
+  // media 读的是 viewport 的宽度，innerWidth 读的是 Layout viewport的宽度，存在 viewport <= Layout viewport 的情况，故针对 safari 用window.matchMedia 判定 Document 是否匹配媒体查询
+  if (checkIsSafari() && (typeof window.matchMedia === 'function')) {
+    return window.matchMedia(`(max-width: ${responseWidth}px)`)?.matches;
+  }
+
+  return window.innerWidth <= responseWidth
+};
