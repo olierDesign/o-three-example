@@ -4,7 +4,7 @@ import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
 
-import TWEEN from '@tweenjs/tween.js';
+import { gsap } from "gsap";
 
 import testGlb from "./static/test.glb";
 import testHdr from "./static/test.hdr";
@@ -40,6 +40,8 @@ export default function Model(props) {
   const hdrRef = useRef();
   // 控制器
   const controlRef = useRef();
+  // gsap 上下文
+  const gsapCtxRef = useRef();
 
   /* ---------- function ---------- */
   // 加载 hdr
@@ -150,8 +152,6 @@ export default function Model(props) {
 
       if (now - pre > 16.6) {
         pre = now - ((now - pre) % 16.6);
-        // 更新补间动画
-        TWEEN.update();
         // 渲染
         render();
       }
@@ -180,9 +180,12 @@ export default function Model(props) {
     if (!sceneRef.current) {
       !!reqId.current && cancelAnimationFrame(reqId.current);
       
-      // 初始化场景 & 加载完 hdr 后再添加
+      // 初始化场景 & 加载完 hdr 后再添加模型
       Promise.all([init(), handleHdr(testHdr)]).then(() => {
         handleGltf(testGlb)
+      }).then(() => {
+        // 创建 gsap 上下文，用于存储“重力动画”
+        gsapCtxRef.current = gsap.context(() => {});
       });
     }
     window.addEventListener("resize", onWindowResize);
@@ -194,19 +197,21 @@ export default function Model(props) {
 
   // 重力值改变
   useEffect(() => {
-    if (!orientation) return;
+    if (!orientation || !gsapCtxRef.current) return;
 
     const { gamma } = orientation;
-    // groupRef.current.rotation.y = gamma;
 
-    TWEEN.removeAll();
-    new TWEEN.Tween(groupRef.current.rotation)
-      .to({x: 0, y: gamma, z: 0}, 200)
-      .onUpdate(render)
-      .start();
+    gsapCtxRef.current.add(() => {
+      // 模型绕 y 轴转动
+      gsap.to(groupRef.current.rotation, {
+        y: gamma,
+        duration: 0.3,
+        ease: 'none'
+      });
+    });
   }, [orientation]);
 
   return (
-    <canvas ref={canvasRef} ></canvas>
+    <canvas ref={canvasRef}></canvas>
   );
 }
