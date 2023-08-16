@@ -25,6 +25,7 @@ import PPTPortalDynamicMap from './pages/ppt/PortalDynamicMap';
 import PPTGradientTexture from './pages/ppt/GradientTexture';
 import PPTGradientMaterial from './pages/ppt/GradientMaterial';
 import PPTGradientGltf from './pages/ppt/GradientGltf';
+import PPTAirplanes from './pages/ppt/Airplanes';
 
 import TestDirectionalLight from './pages/test/DirectionalLight';
 import TestRoomEnvironment from './pages/test/RoomEnvironment';
@@ -58,6 +59,7 @@ function App() {
         <Route exact path="/PPTGradientTexture" element={<PPTGradientTexture/>} />
         <Route exact path="/PPTGradientMaterial" element={<PPTGradientMaterial/>} />
         <Route exact path="/PPTGradientGltf" element={<PPTGradientGltf/>} />
+        <Route exact path="/PPTAirplanes" element={<PPTAirplanes/>} />
 
         <Route exact path="/TestDirectionalLight" element={<TestDirectionalLight/>} />
         <Route exact path="/TestRoomEnvironment" element={<TestRoomEnvironment/>} />

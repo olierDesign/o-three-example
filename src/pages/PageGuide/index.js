@@ -82,6 +82,9 @@ function PageGuide() {
         <li className="o-guide__item">
           <Link to="PPTGradientGltf">渐变模型</Link>
         </li>
+        <li className="o-guide__item">
+          <Link to="PPTAirplanes">飞机</Link>
+        </li>
       </ul>
 
       <h3>测试 示例</h3>
