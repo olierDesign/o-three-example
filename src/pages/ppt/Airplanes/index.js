@@ -458,3 +458,21 @@ export default function PortalDynamicMap(props) {
     </div>
   );
 }
+
+/**
+ * 总结：
+ * 1、OBJLoader 加载模型
+ * 2、完成后遍历模型子 mesh，添加材质
+ * 3、创建 THREE 渲染相关内容
+ *    实体和线框飞机模型在不同的 layer，用不同的 camera 渲染
+ * 4、使用 gsap 创建 “页面元素” 和 “飞机模型” 的动画
+ */
+
+/**
+ * 重点：
+ * 1、WebGLRenderer.setScissor: 
+ *   1.1、用于设置裁剪区域，即指定 WebGL 渲染器将在画布上渲染的矩形区域
+ *   1.2、的起始点 (0, 0) 是在左下角!!!
+ * 2、EdgesGeometry:
+ *   2.1、边缘集合体 todo
+ */
