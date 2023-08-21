@@ -24,6 +24,8 @@ const Cavans3D = () => {
   const rqfId = useRef();
   // 贴图
   const textureRef = useRef();
+  // 控制器
+  const controlRef = useRef();
 
   /* ---------- function ---------- */
   // 获取 hdr
@@ -77,6 +79,8 @@ const Cavans3D = () => {
     // 创建组
     groupRef.current = new THREE.Group();
 
+    controlRef.current = new OrbitControls( sceneCamera.current, rendererRef.current.domElement );
+
     Promise.all([getHdr(), getModel()]).then(([texture, gltf]) => {
       gltf.scene.traverse(child => {
         if (child.isMesh) {
@@ -107,6 +111,8 @@ const Cavans3D = () => {
 
     // hdr
     sceneRef.current.rotation.y += 0.006;
+
+    controlRef.current.update();
   }
 
   // 动画
