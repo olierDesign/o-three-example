@@ -56,7 +56,9 @@ function PageGuide() {
         <li className="o-guide__item">
           <Link to="WebglGpgpuBirds">着色器鸟群 todo (WebglGpgpuBirds)</Link>
         </li>
-        
+        <li className="o-guide__item">
+          <Link to="WebglHelpers">辅助对象 (WebglHelpers)</Link>
+        </li>
       </ul>
 
       <h3>PPT 示例</h3>
