@@ -18,6 +18,7 @@ import WebglCustomAttributesPoints2 from './pages/examples/WebglCustomAttributes
 import WebglCustomAttributesPoints3 from './pages/examples/WebglCustomAttributesPoints3';
 import WebglGpgpuBirds from './pages/examples/WebglGpgpuBirds';
 import WebglHelpers from './pages/examples/WebglHelpers';
+import WebglMaterialsCubemapDynamic from './pages/examples/WebglMaterialsCubemapDynamic';
 
 import PPTCavans3D from './pages/ppt/Cavans3D';
 import PPTCamera from './pages/ppt/Camera';
@@ -53,6 +54,7 @@ function App() {
         <Route exact path="/WebglCustomAttributesPoints3" element={<WebglCustomAttributesPoints3/>} />
         <Route exact path="/WebglGpgpuBirds" element={<WebglGpgpuBirds/>} />
         <Route exact path="/WebglHelpers" element={<WebglHelpers/>} />
+        <Route exact path="/WebglMaterialsCubemapDynamic" element={<WebglMaterialsCubemapDynamic/>} />
         
         <Route exact path="/PPTCavans3D" element={<PPTCavans3D/>} />
         <Route exact path="/PPTCamera" element={<PPTCamera/>} />
